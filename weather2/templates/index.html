@@ -4,46 +4,29 @@
     <meta charset="utf-8">
     <title>Weather</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    
-    <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <style>
-        /* Full-screen overlay for loading spinner */
         .overlay {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.8); /* Light background */
-            z-index: 9999; /* On top of everything */
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
-        }
-
-        /* Spinner styles */
-        .spinner {
-            border: 4px solid rgba(0, 0, 0, 0.3);
-            border-top: 4px solid #00796b; /* Change color to match theme */
-            border-radius: 50%;
-            width: 60px; /* Increased size */
-            height: 60px; /* Increased size */
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
 <body>
     <header class="row" style="background: #337ab7; color: white;">
-        <h1 class="col-md-3 text-center">Weather</h1>
+        <div class="header-title col-md-3 text-center">
+            <img src="https://cdn2.iconfinder.com/data/icons/weather-flat-14/64/weather02-512.png" alt="Weather Icon"> <!-- Replace with your image URL -->
+            <h1>Weather</h1>
+        </div>
     </header>
     <br />
     <br />
@@ -79,7 +62,6 @@
         {% endif %}
     </div>
 
-    <!-- Full-screen overlay for loading -->
     <div class="overlay">
         <div class="spinner"></div>
     </div>
@@ -87,7 +69,7 @@
     <script>
         $(document).ready(function() {
             $('form').on('submit', function() {
-                $('.overlay').show(); // Show the overlay with the spinner when the form is submitted
+                $('.overlay').show();
             });
         });
     </script>

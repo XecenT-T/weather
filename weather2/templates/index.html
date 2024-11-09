@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Weather</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        /* Full-screen overlay for loading spinner */
+        .overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8); /* Light background */
+            z-index: 9999; /* On top of everything */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
+
+        /* Spinner styles */
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.3);
+            border-top: 4px solid #00796b; /* Change color to match theme */
+            border-radius: 50%;
+            width: 60px; /* Increased size */
+            height: 60px; /* Increased size */
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header class="row" style="background: #337ab7; color: white;">
+        <h1 class="col-md-3 text-center">Weather</h1>
+    </header>
+    <br />
+    <br />
+    <main class="row">
+        <center>
+            <form method="post" class="col-md-6 col-md-offset-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="city" placeholder="Search for a city" aria-label="City Search" required>
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </center>
+    </main>
+    <div class="row">
+        {% if data.country_code and data.coordinate and data.temp and data.pressure and data.humidity %}
+        <div class="col-md-6 col-md-offset-3">
+            <h3>Country Code: {{ data.country_code }}</h3>
+            <h5>City Name: {{ data.cityname }}</h5>
+            <h5>Coordinate: {{ data.coordinate }}</h5>
+            <h5>Temperature (in Kelvin): {{ data.tempk }}</h5>
+            <h5>Temperature (in Celsius): {{ data.temp }}</h5>
+            <h5>Pressure: {{ data.pressure }} hPa</h5>
+            <h5>Humidity: {{ data.humidity }}%</h5>
+        </div>
+        {% else %}
+        <div class="col-md-6 col-md-offset-3">
+            <h5>Please enter a valid city name to get the weather data.</h5>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Full-screen overlay for loading -->
+    <div class="overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('form').on('submit', function() {
+                $('.overlay').show(); // Show the overlay with the spinner when the form is submitted
+            });
+        });
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

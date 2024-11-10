@@ -56,13 +56,11 @@
         </center>
     </main>
     <div class="row">
-        {% if data.country_code and data.coordinate and data.temp and data.pressure and data.humidity %}
+        {% if data.cityname and data.temp and data.pressure and data.humidity %}
         <div class="col-md-6 col-md-offset-3">
-            <h3>Country Code: {{ data.country_code }}</h3>
-            <h5>City Name: {{ data.cityname }}</h5>
-            <h5>Coordinate: {{ data.coordinate }}</h5>
-            <h5>Temperature (in Kelvin): {{ data.tempk }}</h5>
-            <h5>Temperature (in Celsius): {{ data.temp }}</h5>
+            <h3>{{ data.cityname }}</h3>
+            <h5>Temperature: {{ data.temp }}</h5>
+            <h5>Feels Like:{{data.feels_like}}</h5>
             <h5>Pressure: {{ data.pressure }} hPa</h5>
             <h5>Humidity: {{ data.humidity }}%</h5>
         </div>
@@ -84,6 +82,6 @@
             });
         });
     </script>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    
 </body>
 </html>

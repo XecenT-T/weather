@@ -22,20 +22,20 @@
 
         .header-title {
             display: flex;
-            align-items: center; /* Vertically center the items */
+            align-items: center;
         }
 
         .header-title img {
-            width: 50px; /* Adjust the size as needed */
-            height: auto; /* Maintain aspect ratio */
-            margin-right: 10px; /* Space between image and text */
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
     <header class="row" style="background: #337ab7; color: white;">
         <div class="header-title col-md-3 text-center">
-            <img src="https://cdn2.iconfinder.com/data/icons/weather-flat-14/64/weather02-512.png" alt="Weather Icon"> <!-- Replace with your image URL -->
+            <img src="https://cdn2.iconfinder.com/data/icons/weather-flat-14/64/weather02-512.png" alt="Weather Icon">
             <h1>Weather</h1>
         </div>
     </header>
@@ -60,7 +60,7 @@
         <div class="col-md-6 col-md-offset-3">
             <h3>{{ data.cityname }}</h3>
             <h5>Temperature: {{ data.temp }}</h5>
-            <h5>Feels Like:{{data.feels_like}}</h5>
+            <h5>Feels Like: {{ data.feels_like }}</h5>
             <h5>Pressure: {{ data.pressure }} hPa</h5>
             <h5>Humidity: {{ data.humidity }}%</h5>
         </div>
@@ -69,10 +69,6 @@
             <h5>Please enter a valid city name to get the weather data.</h5>
         </div>
         {% endif %}
-    </div>
-
-    <div class="overlay">
-        <div class="spinner"></div>
     </div>
 
     <script>
